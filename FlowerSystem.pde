@@ -1,16 +1,16 @@
 public class FlowerSystem{
-	private List<Bloom> blooms;
-
+  private List<Bloom> blooms;
+  
   private List<Bloom> worker;
 
-	public FlowerSystem() {
-		blooms = new ArrayList<Bloom>();
+  public FlowerSystem() {
+    blooms = new ArrayList<Bloom>();
     worker = new ArrayList<Bloom>();
-	}
+  }
 
-	public void addBloom(Bloom b) {
-		this.blooms.add(b);
-	}
+  public void addBloom(Bloom b) {
+    this.blooms.add(b);
+  }
 
   public void move() {
     for (int i = 0; i < this.worker.size(); ++i) {
@@ -18,7 +18,7 @@ public class FlowerSystem{
     }
   }
 
-	public void draw() {
+  public void draw() {
     if (blooms.size() != 0) {
       worker.add(blooms.get(0));
       blooms.remove(0);
@@ -30,5 +30,5 @@ public class FlowerSystem{
         this.worker.remove(i);
       }
     }
-	}
+  }
 }

@@ -16,9 +16,9 @@ void setup() {
   photo.loadPixels();
   for (int i = 0; i < photo.width; i = i + 6) {
     for (int j = 0; j < photo.height; j = j + 6) {
-       if (photo.pixels[j * photo.height + i] == color(0, 0, 0)) {
-         fs.addBloom(createBloom(i, j, bloomRadius, color(24, 42, 45), petalCount));
-       }
+      if (photo.pixels[j * photo.height + i] == color(0, 0, 0)) {
+        fs.addBloom(createBloom(i, j, bloomRadius, color(24, 42, 45), petalCount));
+      }
     }
   }
 }

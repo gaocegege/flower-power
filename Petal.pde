@@ -1,33 +1,33 @@
 public class Petal {
   private int posX;
-  
+
   private int posY;
-  
-	private double sketchA;
 
-	private double sketchB;
+  private double sketchA;
 
-	private int startAngle;
+  private double sketchB;
 
-	private int angle;
+  private int startAngle;
 
-	private final Bloom bloom;
+  private int angle;
 
-	private double growFactor;
+  private final Bloom bloom;
 
-	private double radius;
+  private double growFactor;
 
-	public Petal(int posX, int posY, double sketchA, double sketchB, int startAngle, int angle, Bloom bloom, double growFactor) {
+  private double radius;
+
+  public Petal(int posX, int posY, double sketchA, double sketchB, int startAngle, int angle, Bloom bloom, double growFactor) {
     this.posX = posX;
     this.posY = posY;
-		this.sketchA = sketchA;
-		this.sketchB = sketchB;
-		this.startAngle = startAngle;
-		this.angle = angle;
-		this.bloom = bloom;
-		this.growFactor = growFactor;
-		this.radius = 1;
-	}
+    this.sketchA = sketchA;
+    this.sketchB = sketchB;
+    this.startAngle = startAngle;
+    this.angle = angle;
+    this.bloom = bloom;
+    this.growFactor = growFactor;
+    this.radius = 1;
+  }
 
   public void drawNow(){
     float v1x = (float) rotateX(0, this.radius, degrad(this.startAngle));
@@ -42,11 +42,11 @@ public class Petal {
     bezier(v1x + posX, v1y + posY, v2x + posX, v2y + posY, v3x + posX, v3y + posY, v4x + posX, v4y + posY);
   }
 
-	public void move() {
-		if (this.radius <= this.bloom.getRadius()) {
-			this.radius += this.growFactor; // / 10;
-		}
-	}
+  public void move() {
+    if (this.radius <= this.bloom.getRadius()) {
+      this.radius += this.growFactor; // / 10;
+    }
+  }
 
   public boolean isDrawable() {
     return (this.radius <= this.bloom.getRadius());
