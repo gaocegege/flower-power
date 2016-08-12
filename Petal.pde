@@ -1,4 +1,8 @@
 public class Petal {
+  private int posX;
+  
+  private int posY;
+  
 	private double sketchA;
 
 	private double sketchB;
@@ -13,9 +17,9 @@ public class Petal {
 
 	private double radius;
 
-	private boolean isFinished = false;
-
-	public Petal(double sketchA, double sketchB, int startAngle, int angle, Bloom bloom, double growFactor) {
+	public Petal(int posX, int posY, double sketchA, double sketchB, int startAngle, int angle, Bloom bloom, double growFactor) {
+    this.posX = posX;
+    this.posY = posY;
 		this.sketchA = sketchA;
 		this.sketchB = sketchB;
 		this.startAngle = startAngle;
@@ -34,19 +38,23 @@ public class Petal {
     float v3y = (float) (v1y * this.sketchA);
     float v4x = (float) (v1x * this.sketchB);
     float v4y = (float) (v1y * this.sketchB);
-    bezier(v1x, v1y, v2x, v2y, v3x, v3y, v4x, v4y);
+    fill(190, 42, 0);
+    bezier(v1x + posX, v1y + posY, v2x + posX, v2y + posY, v3x + posX, v3y + posY, v4x + posX, v4y + posY);
   }
 
-	public void draw() {
+	public void move() {
 		if (this.radius <= this.bloom.getRadius()) {
 			this.radius += this.growFactor; // / 10;
-			this.drawNow();
-		} else {
-			this.isFinished = true;
 		}
 	}
 
-  public boolean getIsFinished() {
-    return this.isFinished;
+  public boolean isDrawable() {
+    return (this.radius <= this.bloom.getRadius());
+  }
+
+  public void draw() {
+    if (this.radius <= this.bloom.getRadius()) {
+      this.drawNow();
+    }
   }
 }
