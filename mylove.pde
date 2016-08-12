@@ -8,7 +8,7 @@ List<Bloom> blooms;
 FlowerSystem fs;
 
 void setup() {
-  frameRate(1);
+  //frameRate(1);
   fs = new FlowerSystem();
   size(1000, 800);
   photo = loadImage(xrwImg);
