@@ -1,9 +1,25 @@
 public static class Utils {
-  static final int petalCount = 9;
-  static final double petalStretch = 2;
-  static final double growFactor = 1.5;
-  static final int bloomRadius = 8;
-  static final double circle = Math.PI * 2;
+  static final int PETALCOUNTMIN = 8;
+  static final int PETALCOUNTMAX = 10;
+
+  static final double PETALSCRACHMIN = 0.1;
+  static final double PETALSCRACHMAX = 3;
+
+  static final double GROWFACTORMIN = 0.1;
+  static final double GROWFACTORMAX = 1;
+
+  static final int BLOOMRADIUSMIN = 8;
+  static final int BLOOMRADIUSMAX = 10;
+
+  static final double CIRCLE = Math.PI * 2;
+
+  static final int RMIN = 128;
+  static final int RMAX = 255;
+  static final int GMIN = 0;
+  static final int GMAX = 128;
+  static final int BMIN = 0;
+  static final int BMAX = 128;
+  static final double OPACITY = 0.1;
 
   static double rotateX(double x, double y, double theta) {
     return Math.cos(theta) * x - Math.sin(theta) * y;
@@ -14,11 +30,11 @@ public static class Utils {
   }
 
   static double degrad(double angle) {
-    return circle / 360 * angle;
+    return CIRCLE / 360 * angle;
   }
 
   static double raddeg(double angle) {
-    return angle / circle * 360;
+    return angle / CIRCLE * 360;
   }
 
   static int randInt(int min, int max) {
@@ -30,7 +46,28 @@ public static class Utils {
 
     return randomNum;
   }
+
+  static double randDouble(double min, double max) {
+    Random rand = new Random();
+
+    double randomNum = rand.nextDouble() * (max - min) + min;
+
+    return randomNum;
+  }
 }
+
+int randomColor() {
+    int r = Utils.randInt(Utils.RMIN, Utils.RMAX);
+    int g = Utils.randInt(Utils.GMIN, Utils.GMAX);
+    int b = Utils.randInt(Utils.BMIN, Utils.BMAX);
+
+    int limit = 5;
+    if (Math.abs(r - g) <= limit && Math.abs(g - b) <= limit && Math.abs(b - r) <= limit) {
+    return randomColor();
+    } else {
+    return color(r, g, b);
+    }    
+  }
 
 Bloom createBloom(int positionX, int positionY, int radius, color colour, int petalCount) {
   Bloom b = new Bloom(positionX, positionY, radius, colour, petalCount);  
@@ -38,7 +75,11 @@ Bloom createBloom(int positionX, int positionY, int radius, color colour, int pe
   int angle = 360 / b.getPetalCount();
   int startAngle = Utils.randInt(0, 90);
   for (int i = 0; i < b.getPetalCount(); i++) {
-    b.pushPetal(new Petal(positionX, positionY, Utils.petalStretch, Utils.petalStretch, startAngle + i * angle, angle, b, Utils.growFactor));
+    b.pushPetal(new Petal(positionX, positionY, 
+    Utils.randDouble(Utils.PETALSCRACHMIN, Utils.PETALSCRACHMAX), 
+    Utils.randDouble(Utils.PETALSCRACHMIN, Utils.PETALSCRACHMAX),
+    startAngle + i * angle, angle, b, 
+    Utils.randDouble(Utils.GROWFACTORMIN, Utils.GROWFACTORMAX)));
   }
   return b;
 }
