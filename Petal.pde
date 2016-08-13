@@ -38,7 +38,8 @@ public class Petal {
     float v3y = (float) (v1y * this.sketchA);
     float v4x = (float) (v1x * this.sketchB);
     float v4y = (float) (v1y * this.sketchB);
-    fill(190, 42, 0);
+    fill(this.bloom.getColour());
+    noStroke();
     bezier(v1x + posX, v1y + posY, v2x + posX, v2y + posY, v3x + posX, v3y + posY, v4x + posX, v4y + posY);
   }
 

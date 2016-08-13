@@ -60,4 +60,8 @@ public class Bloom {
   public void pushPetal(Petal p) {
     this.petals.add(p);
   }
+
+  private color getColour() {
+    return this.colour;
+  } 
 }

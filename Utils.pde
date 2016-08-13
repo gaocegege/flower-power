@@ -63,9 +63,9 @@ int randomColor() {
 
     int limit = 5;
     if (Math.abs(r - g) <= limit && Math.abs(g - b) <= limit && Math.abs(b - r) <= limit) {
-    return randomColor();
+      return randomColor();
     } else {
-    return color(r, g, b);
+      return color(r, g, b);
     }    
   }
 
