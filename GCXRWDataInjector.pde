@@ -24,12 +24,14 @@ public class GCXRWDataInjector {
    *	@since  13.08.2016
    */
   public void injectData() {
+    int offsetX = 0;
     if (gaocegege != null) {
       parseImage(gaocegege);
+      offsetX = gaocegege.width;
     }
 
     if (xrw != null) {
-      parseImage(xrw);
+      parseImageWithOffset(xrw, offsetX, 0);
     }
   }
 
