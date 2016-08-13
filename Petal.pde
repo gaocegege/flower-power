@@ -30,10 +30,10 @@ public class Petal {
   }
 
   public void drawNow(){
-    float v1x = (float) rotateX(0, this.radius, degrad(this.startAngle));
-    float v1y = (float) rotateY(0, this.radius, degrad(this.startAngle));
-    float v2x = (float) rotateX(v1x, v1y, degrad(this.angle));
-    float v2y = (float) rotateY(v1x, v1y, degrad(this.angle));
+    float v1x = (float) Utils.rotateX(0, this.radius, Utils.degrad(this.startAngle));
+    float v1y = (float) Utils.rotateY(0, this.radius, Utils.degrad(this.startAngle));
+    float v2x = (float) Utils.rotateX(v1x, v1y, Utils.degrad(this.angle));
+    float v2y = (float) Utils.rotateY(v1x, v1y, Utils.degrad(this.angle));
     float v3x = (float) (v1x * this.sketchA);
     float v3y = (float) (v1y * this.sketchA);
     float v4x = (float) (v1x * this.sketchB);

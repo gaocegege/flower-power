@@ -6,8 +6,10 @@ List<Bloom> blooms;
 FlowerSystem fs;
 GCXRWDataInjector dataInjector;
 
+int c = color(24, 42, 45);
+
 void setup() {
-  frameRate(1);
+  frameRate(20);
   size(1000, 800);
 
   // Create FlowerSystem and inject data to it.
