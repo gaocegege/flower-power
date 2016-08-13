@@ -36,11 +36,11 @@ public class Petal {
     float v2y = (float) Utils.rotateY(v1x, v1y, Utils.degrad(this.angle));
     float v3x = (float) (v1x * this.sketchA);
     float v3y = (float) (v1y * this.sketchA);
-    float v4x = (float) (v1x * this.sketchB);
-    float v4y = (float) (v1y * this.sketchB);
+    float v4x = (float) (v2x * this.sketchB);
+    float v4y = (float) (v2y * this.sketchB);
     fill(this.bloom.getColour());
     noStroke();
-    bezier(v1x + posX, v1y + posY, v2x + posX, v2y + posY, v3x + posX, v3y + posY, v4x + posX, v4y + posY);
+    bezier(v1x + posX, v1y + posY, v3x + posX, v3y + posY, v4x + posX, v4y + posY, v2x + posX, v2y + posY);
   }
 
   public void move() {

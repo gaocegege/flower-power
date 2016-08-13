@@ -19,7 +19,7 @@ public static class Utils {
   static final int GMAX = 128;
   static final int BMIN = 0;
   static final int BMAX = 128;
-  static final double OPACITY = 0.1;
+  static final float OPACITY = 100;
 
   static double rotateX(double x, double y, double theta) {
     return Math.cos(theta) * x - Math.sin(theta) * y;
@@ -65,7 +65,7 @@ int randomColor() {
     if (Math.abs(r - g) <= limit && Math.abs(g - b) <= limit && Math.abs(b - r) <= limit) {
       return randomColor();
     } else {
-      return color(r, g, b);
+      return color(r, g, b, Utils.OPACITY);
     }    
   }
 
