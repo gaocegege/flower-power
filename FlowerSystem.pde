@@ -1,4 +1,11 @@
+/**
+ *  FlowerSystem, store all the blooms and draw them.
+ *
+ *	@author gaocegege
+ *	@since  13.08.2016
+ */
 public class FlowerSystem{
+
   private List<Bloom> blooms;
   
   private List<Bloom> worker;
